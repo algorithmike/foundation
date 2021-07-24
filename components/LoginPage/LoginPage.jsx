@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
-import placholderLogo from './assets/placholder-logo.png';
+import { Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import styles from './LoginPage.styles';
+import placholderLogo from '../../assets/placholder-logo.png';
 
-export default function App() {
+const LoginPage = () => {
+  
   const [loginFields, setLoginFields] = useState({
     email: '',
     password: ''
@@ -11,9 +13,9 @@ export default function App() {
     isNewUser: false,
     confirmPassword: ''
   })
-
+  
   const handleLoginInputChange = (val) => {
-    console.log(val)
+    console.log(val);
   }
 
   return (
@@ -43,43 +45,9 @@ export default function App() {
         <Text style={styles.forgotButton}>I forgot my password.</Text>
       </TouchableOpacity>
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputView: {
-    backgroundColor: "#EEE",
-    borderRadius: 10,
-    borderColor: 'black',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    width: "55%",
-    height: 45,
-    marginBottom:15,
-    alignItems: "center",
-  },
-  TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10
-  },
-  loginButton: {
-    width:"55%",
-    borderRadius: 10,
-    height:50,
-    alignItems:"center",
-    justifyContent:"center",
-    marginTop: 20,
-    marginBottom: 10,
-    backgroundColor:"#aaf",
-  },
-  forgotButton: {
-    height: 20
-  }
-});
+
+
+export default LoginPage
