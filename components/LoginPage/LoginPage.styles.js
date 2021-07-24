@@ -7,11 +7,12 @@ export default styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    forgotButton: {
-      height: 20
+    subButton: {
+      height: 20,
+      marginBottom: 10
     },
     inputView: {
-      backgroundColor: "#EEE",
+      backgroundColor: "#eee",
       borderRadius: 10,
       borderColor: 'black',
       borderStyle: 'solid',
@@ -32,7 +33,9 @@ export default styles = StyleSheet.create({
       backgroundColor:"#aaf",
     },
     TextInput: {
-      height: 50,
+      height: '100%',
+      width: '100%',
+      textAlign: "center",
       flex: 1,
       padding: 10
     }

@@ -4,18 +4,17 @@ import styles from './LoginPage.styles';
 import placholderLogo from '../../assets/placholder-logo.png';
 
 const LoginPage = () => {
-  
-  const [loginFields, setLoginFields] = useState({
-    email: '',
-    password: ''
-  });
-  const [newUserFields, setNewUserFields] = useState({
-    isNewUser: false,
-    confirmPassword: ''
-  })
-  
-  const handleLoginInputChange = (val) => {
-    console.log(val);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isNewUser, setIsNewUser] = useState(false);
+
+  const toggleLoginNewUser = () => {
+    setIsNewUser(currentState => !currentState);
+  }
+
+  const handleSubmit = () => {
+    console.log('Submit__Button Pushed')
   }
 
   return (
@@ -25,24 +24,47 @@ const LoginPage = () => {
         <TextInput
           style={styles.TextInput}
           placeholder="email"
-          placeholderTextColor="#003366"
-          onChangeText={handleLoginInputChange}
+          value={email}
+          placeholderTextColor="#aaf"
+          onChangeText={setEmail}
         />
       </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="password"
-          placeholderTextColor="#003366"
+          placeholder={isNewUser ? "create password" : "password" }
+          value={password}
+          placeholderTextColor="#aaf"
           secureTextEntry={true}
-          onChangeText={handleLoginInputChange}
+          onChangeText={setPassword}
         />
       </View>
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginText}>LOGIN</Text>
+      {
+        isNewUser ?
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="confirm password"
+              value={confirmPassword}
+              placeholderTextColor="#003366"
+              secureTextEntry={true}
+              onChangeText={setConfirmPassword}
+            />
+          </View> :
+          null
+      }
+      <TouchableOpacity style={styles.loginButton} onPress={handleSubmit}>
+        <Text style={styles.loginText}>
+          {isNewUser ? "CREATE ACCOUNT" : "LOGIN"}
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text style={styles.forgotButton}>I forgot my password.</Text>
+        <Text style={styles.subButton}>I forgot my password.</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={toggleLoginNewUser}>
+        <Text style={styles.subButton}>
+          {isNewUser ? "I have an account." : "Create a new account."}
+        </Text>
       </TouchableOpacity>
     </View>
   )
